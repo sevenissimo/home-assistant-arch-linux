@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.2.8
+pkgver=2022.2.9
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -53,13 +53,13 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=e3a2b51f0345a4ae1decb9b3a2683e168b84b530
+_tag=c95a72d2adc658a9b11ccbffbac1a4cea1b8b71d
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
 )
 b2sums=('SKIP'
-        '4b099405b1ea0e5585e612e2bd9a0841ae0b4da7a66c28b44b934dc69af58baeea7f930792c37bf3167e889ee3d14470661b7fff016a80305b33d09fc31cf07d')
+        'eef653f45d01dfeb191d421905aa08f8fd297c9a66262d83ce5b8c70b932fc69d3b5e16471861b2cd4021ff3519d5037d8912afc25565430be07ca82300ce5c9')
 
 pkgver() {
   cd home-assistant
@@ -72,9 +72,6 @@ prepare() {
   sed 's/==/>=/g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
   # allow pip >= 20.3 to be used
   sed 's/,<20.3//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # remove python-yaml restriction
-  sed 's/pyyaml>=6.0//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
-  sed 's/pyyaml==6.0//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
 }
 
 build() {
