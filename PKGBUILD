@@ -8,7 +8,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2022.2.9
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -59,7 +59,7 @@ source=(
   home-assistant.service
 )
 b2sums=('SKIP'
-        'eef653f45d01dfeb191d421905aa08f8fd297c9a66262d83ce5b8c70b932fc69d3b5e16471861b2cd4021ff3519d5037d8912afc25565430be07ca82300ce5c9')
+        '4b099405b1ea0e5585e612e2bd9a0841ae0b4da7a66c28b44b934dc69af58baeea7f930792c37bf3167e889ee3d14470661b7fff016a80305b33d09fc31cf07d')
 
 pkgver() {
   cd home-assistant
