@@ -7,8 +7,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.2.9
-pkgrel=2
+pkgver=2022.3.5
+pkgrel=0
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -46,6 +46,9 @@ depends=(
 makedepends=(
   git
   python-setuptools
+  python-wheel
+  python-build
+  python-installer
 )
 optdepends=(
   'net-tools: Nmap host discovery'
@@ -53,7 +56,7 @@ optdepends=(
   'python-dtlssocket: Ikea Tradfri integration'
   'python-lxml: Meteo France integration'
 )
-_tag=c95a72d2adc658a9b11ccbffbac1a4cea1b8b71d
+_tag=b1153720c0ab148878b53f112b83932b5b51d84b
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
@@ -70,18 +73,18 @@ prepare() {
   cd home-assistant
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # allow pip >= 20.3 to be used
-  sed 's/,<20.3//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
+  # allow setuptools 59.3 to be used
+  sed 's/setuptools~=60.5/setuptools>=59.3/' -i pyproject.toml
 }
 
 build() {
   cd home-assistant
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd home-assistant
-  python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 ../home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
