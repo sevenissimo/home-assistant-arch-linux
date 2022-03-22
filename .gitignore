@@ -1,0 +1,4 @@
+home-assistant-*.pkg.tar*
+home-assistant/*
+pkg/*
+src/*

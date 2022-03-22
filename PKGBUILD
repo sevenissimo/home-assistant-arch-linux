@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.3.5
+pkgver=2022.3.6
 pkgrel=0
 arch=(any)
 url=https://home-assistant.io/
@@ -51,12 +51,14 @@ makedepends=(
   python-installer
 )
 optdepends=(
+  'python-home-assistant-frontend: The official Home Assistant frontend'
+  'python-gtts: Google Text-to-Speech'
   'net-tools: Nmap host discovery'
-  'openzwave: Z-Wave integration'
-  'python-dtlssocket: Ikea Tradfri integration'
-  'python-lxml: Meteo France integration'
+  #'openzwave: Z-Wave integration'
+  #'python-dtlssocket: Ikea Tradfri integration'
+  #'python-lxml: Meteo France integration'
 )
-_tag=b1153720c0ab148878b53f112b83932b5b51d84b
+_tag=49edaf2f68749b3b1d29dd70191c70adfa2adb1c
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service

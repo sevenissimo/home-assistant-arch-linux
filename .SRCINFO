@@ -1,12 +1,15 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2022.2.9
-	pkgrel = 2
+	pkgver = 2022.3.6
+	pkgrel = 0
 	url = https://home-assistant.io/
 	arch = any
 	license = APACHE
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = gcc
 	depends = python-aiohttp
 	depends = python-aiohttp-cors
@@ -36,13 +39,12 @@ pkgbase = home-assistant
 	depends = python-yaml
 	depends = python-yarl
 	depends = python-zeroconf
+	optdepends = python-home-assistant-frontend: The official Home Assistant frontend
+	optdepends = python-gtts: Google Text-to-Speech
 	optdepends = net-tools: Nmap host discovery
-	optdepends = openzwave: Z-Wave integration
-	optdepends = python-dtlssocket: Ikea Tradfri integration
-	optdepends = python-lxml: Meteo France integration
-	source = git+https://github.com/home-assistant/home-assistant.git#tag=c95a72d2adc658a9b11ccbffbac1a4cea1b8b71d
+	source = git+https://github.com/home-assistant/home-assistant.git#tag=49edaf2f68749b3b1d29dd70191c70adfa2adb1c
 	source = home-assistant.service
 	b2sums = SKIP
-	b2sums = 4b099405b1ea0e5585e612e2bd9a0841ae0b4da7a66c28b44b934dc69af58baeea7f930792c37bf3167e889ee3d14470661b7fff016a80305b33d09fc31cf07d 
+	b2sums = 4b099405b1ea0e5585e612e2bd9a0841ae0b4da7a66c28b44b934dc69af58baeea7f930792c37bf3167e889ee3d14470661b7fff016a80305b33d09fc31cf07d
 
 pkgname = home-assistant
