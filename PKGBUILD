@@ -7,8 +7,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2022.4.4
-_tag=30db51a49c8acb0180d23fa4b28047788c71fe38
+pkgver=2022.6.4
+_tag=8b0e10d8a5790c751412a9fbf83589ec1588d4d4
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -75,8 +75,8 @@ prepare() {
   cd home-assistant
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # allow setuptools 59.3 to be used
-  sed 's/setuptools~=60.5/setuptools>=59.3/' -i pyproject.toml
+  # allow setuptools from Arch repo to be used
+  sed 's/setuptools~=62.3/setuptools>=60.6/' -i pyproject.toml
 }
 
 build() {
